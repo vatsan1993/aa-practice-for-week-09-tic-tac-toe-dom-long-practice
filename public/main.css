@@ -1,1 +1,53 @@
 /* Your code here */
+h1{
+    height: 100px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    width: 300px;
+    margin: auto;
+    margin: 20px auto;
+}
+
+.cell{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.cell[data-col = "0"],.cell[data-col = "1"]{
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.cell[data-col = "2"]{
+    border-bottom: 2px solid black;
+}
+
+
+.cell[data-row = "2"]{
+    border-bottom: 0;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+
+
+}
+
+button{
+    border: 0;
+    background-color: rgb(198, 54, 10);
+    width: 150px;
+    margin: 10px;
+    font-size: 20px;
+    padding: 10px;
+}
