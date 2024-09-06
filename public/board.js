@@ -15,6 +15,8 @@ export default class Board {
   }
 
   insert(row, col) {
+    console.log(row, col);
+
     let currentValue = this.grid[row][col];
     if (!currentValue) {
       this.grid[row][col] = this.currentSymbol;

@@ -21,12 +21,24 @@ let createGrid = () => {
 };
 
 const makeMove = (event) => {
-  let cell = event.target;
+  let cell = event.currentTarget;
+  console.log(cell);
+
   let row = cell.dataset.row;
   let col = cell.dataset.col;
   let currentSymbol = board.currentSymbol;
+  let cellImage = document.createElement('img');
+
   if (board.insert(row, col)) {
-    cell.textContent = currentSymbol;
+    // cell.textContent = currentSymbol;
+    if (currentSymbol == 'X') {
+      cellImage.src =
+        'https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-x.svg';
+    } else {
+      cellImage.src =
+        'https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-o.svg';
+    }
+    cell.appendChild(cellImage);
   }
 
   // check win
