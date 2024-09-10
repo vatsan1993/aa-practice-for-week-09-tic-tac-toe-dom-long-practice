@@ -3,6 +3,7 @@ export default class Board {
     this.grid = [];
     this.currentSymbol = 'X';
     this.spacesLeft = 9;
+    this.winner = '';
   }
   setup() {
     for (let i = 0; i < 3; i++) {
@@ -24,9 +25,17 @@ export default class Board {
       console.log(this.grid);
       console.log(this.currentSymbol);
       this.spacesLeft--;
+
       return true;
     }
     return false;
+  }
+
+  getSize() {
+    return this.grid.length;
+  }
+  getSymbol(row, col) {
+    return this.grid[row][col];
   }
 
   checkRows(rowIndex, symbol) {
@@ -89,16 +98,20 @@ export default class Board {
     console.log(row, col);
 
     console.log(col == this.grid.length - row - 1);
-
-    return (
+    if (
       this.checkRows(row, symbol) ||
       this.checkCols(col, symbol) ||
       (row == col ? this.checkDiag1(symbol) : false) ||
       (col == this.grid.length - row - 1 ? this.checkDiag2(symbol) : false)
-    );
+    ) {
+      this.winner = symbol;
+      return true;
+    }
+    return false;
   }
 
   checkDraw() {
+    this.winner = 'None';
     return this.spacesLeft === 0;
   }
 }
